@@ -1,0 +1,32 @@
+
+.table, th, td {
+     border: 1px solid black;
+}
+
+.tableContainer{
+    overflow-y: scroll;
+    height:300px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.button {
+    background-color: #808080;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    width:220px;
+    height:30px;
+    text-align:center;
+    border: 1px solid gray;
+}
+.button:hover {
+    background-color: #696969;
+}
+
+.alert-warning{
+    text-align:center;
+    color: green;
+}

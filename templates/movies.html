@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <script>
+            function validateForm() {
+                var name=document.forms["updateForm"]["name"].value;
+                var image=document.forms["updateForm"]["image"].value;
+                var description=document.forms["updateForm"]["description"].value;
+                if (name == "" && image =="" && description=="") {
+                    alert("One of the fields must be filled out while updating movie");
+                    return false;
+                }
+            } 
+        </script>
+    </head>
+  <body>
+
+    <link rel="stylesheet" type="text/css" href="../static/style.css"/>
+    
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+
+    <b><h7>Add Movie</h7></b>
+    <form method="POST" action="/movie">
+
+        <label for="name">Title</label>
+        <input type="text" name="name" required>
+        <label for="image">Image URL</label>
+        <input type="text" name="image" >
+        
+        <label for="description">Decription</label>
+        <input type="text" name="description">
+        <input class="button" type="submit" value="Add">
+    </form>
+    <div style='float:right'> 
+        <b><h7>Search Movie</h7></b>
+        <form method="POST" action="/movie/search">
+            <input type="text" name="name">
+            <input class="button" type="submit" value="Search">
+        </form>
+    </div>
+    <div >
+        <b><h7>Delete Movie</h7></b>
+        <form method="POST" action="/movie/delete">
+            <input type="text" name="name" required>
+            <input class="button" type="submit" value="Delete">
+        </form>
+    </div>
+
+    <b><h7>Advance Search</h7></b>
+    <br>
+    <div style='float:right'>
+        <form method="POST" action="/movie/advanceSearchAll">
+            <input type="text" name="name">
+            <input class="button" type="submit" value="contains all words">
+        </form>
+    </div>
+    <div>
+        <form method="POST" action="/movie/advanceSearchAny">
+            <input type="text" name="name">
+            <input class="button" type="submit" value="contains any words">
+        </form>
+    </div>
+
+    <b><h7>Movies</h7></b>
+
+    <div class="tableContainer"">
+    <table cellspacing="0" cellpadding="0" border="0">
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>image</th>
+            <th>description</th>
+            <th>dateLastEdited</th>
+            <th>
+                <form method="POST" action="/movie/generatePdf">
+                    <input class="button" type="submit" value="Generate Pdf">
+                </form>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for movie in movies %}
+            <tr>
+                <td >{{movie.name}}</td>
+                <td>{{movie.image}}</td>
+                <td>{{movie.description}}</td>
+                <td>{{movie.dateLastEdited}}</td>
+                <td>
+                    <form name="updateForm" method="POST" action="/movie/update" onsubmit="return validateForm()" >
+                        
+                        <input type="hidden" value="{{movie.name}}" name="oldtitle">
+                        <table>
+                            <tr>
+                                <td><label for="name">Title</label></td>
+                                <td><input type="text" name="name"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="image">Image URL</label></td>
+                                <td><input type="text" name="image"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="description">Decription</label></td>
+                                <td><input type="text" name="description"></td>
+                            </tr>
+                        </table>
+                        <input class="button" type="submit" value="Update"> 
+                    </form> 
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+</table>
+</div>
+  </body>
+</html>

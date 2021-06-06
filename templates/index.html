@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+  <a href="http://127.0.0.1:5000/movie/all" ><h1 style="text-align:center">Go Home</h1></a>
+ 
+<h2>Usage description</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>URL</th>
+    <th>Description</th>
+    <th>Args</th> 
+    <th>Return</th>
+  </tr>
+  <tr>
+    <td>http://127.0.0.1:5000/movie</td>
+    <td>Add movie</td>
+    <td>{
+      "name": "Movie Test Data1",
+      "image": "test url",
+      "description": "test description"
+    }</td>
+    <td>201 status code for success, 409 for duplicate</td>
+  </tr>
+  <tr>
+    <td>http://127.0.0.1:5000/movie/update</td>
+    <td>Edit movies</td>
+    <td>{
+      "oldtitle":"Movie Test Data1",
+      "name": "updating Movie Test Data1",
+      "image": "test url",
+      "description": "test description"
+    }</td>
+    <td>200 status code for success , 404 for movie not found</td>
+  </tr>
+  <tr>
+    <td>http://127.0.0.1:5000/movie/search</td>
+    <td>Search Movies using search string</td>
+    <td>{"name": "movie test"}</td>
+    <td>200 for success</td>
+  </tr>
+  <tr>
+    <td>http://127.0.0.1:5000/movie/advanceSearchAny</td>
+    <td>Search Movies using any combination of search string</td>
+    <td>{"name": "movie test"}</td>
+    <td>200 for success</td>
+  </tr>
+  <tr>
+    <td>http://127.0.0.1:5000/movie/advanceSearchAll</td>
+    <td>Search Movies using all combination of search string</td>
+    <td>{"name": "movie test the"}</td>
+    <td>200 for success</td>
+  </tr>
+  <tr>
+    <td>http://127.0.0.1:5000/movie/delete</td>
+    <td>Delete Movie</td>
+    <td>{"name": myMovieName}</td>
+    <td>200 for success, 404 for Movie not found</td>
+  </tr>
+  <tr>
+    <td>http://127.0.0.1:5000/movie/all</td>
+    <td>List all movies</td>
+    <td>-</td>
+    <td>200 for success</td>
+  </tr>
+  <tr>
+    <td>http://127.0.0.1:5000/movie/generatePdf</td>
+    <td>Generate Pdf</td>
+    <td>-</td>
+    <td>200 for success</td>
+  </tr>
+</table>
+
+</body>
+</html>
