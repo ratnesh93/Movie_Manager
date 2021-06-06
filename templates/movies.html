@@ -22,7 +22,7 @@
     </div>
     {% endfor %}
 
-    <b><h7>Add Movie</h7></b>
+    <u><b><h7>Add Movie</h7></b></u>
     <form method="POST" action="/movie">
 
         <label for="name">Title</label>
@@ -35,21 +35,21 @@
         <input class="button" type="submit" value="Add">
     </form>
     <div style='float:right'> 
-        <b><h7>Search Movie</h7></b>
+        <u><b><h7>Search Movie</h7></b></u>
         <form method="POST" action="/movie/search">
             <input type="text" name="name">
             <input class="button" type="submit" value="Search">
         </form>
     </div>
     <div >
-        <b><h7>Delete Movie</h7></b>
+        <u><b><h7>Delete Movie</h7></b></u>
         <form method="POST" action="/movie/delete">
             <input type="text" name="name" required>
             <input class="button" type="submit" value="Delete">
         </form>
     </div>
 
-    <b><h7>Advance Search</h7></b>
+    <u><b><h7>Advance Search</h7></b></u>
     <br>
     <div style='float:right'>
         <form method="POST" action="/movie/advanceSearchAll">
@@ -64,10 +64,10 @@
         </form>
     </div>
 
-    <b><h7>Movies</h7></b>
+    <u><b><h7>Movies</h7></b></u>
 
-    <div class="tableContainer"">
-    <table cellspacing="0" cellpadding="0" border="0">
+    <div class="tableContainer">
+    <table cellspacing="0" cellpadding="0">
         <thead>
         <tr>
             <th>name</th>
