@@ -167,8 +167,12 @@ def advanceSearchAny():
         return redirect("/movie/all")
     
     words=args['name'].split()
-
-    result=MovieModel.query.filter(MovieModel.name.contains(words[0]))
+    
+    result=None
+    if len(words)==1:
+        result=MovieModel.query.filter(MovieModel.name.contains(words[0])).order_by(collate(MovieModel.name,'NOCASE'))
+    else:
+        result=MovieModel.query.filter(MovieModel.name.contains(words[0]))
     for i in range(1,len(words)):
         temp=MovieModel.query.filter(MovieModel.name.contains(words[i]))
         if(i!=len(words)-1):
@@ -197,7 +201,11 @@ def advanceSearchAll():
     
     words=args['name'].split()
     
-    result=MovieModel.query.filter(MovieModel.name.contains(words[0]))
+    result=None
+    if len(words)==1:
+        result=MovieModel.query.filter(MovieModel.name.contains(words[0])).order_by(collate(MovieModel.name,'NOCASE'))
+    else:
+        result=MovieModel.query.filter(MovieModel.name.contains(words[0]))
     for i in range(1,len(words)):
         temp=MovieModel.query.filter(MovieModel.name.contains(words[i]))
         if(i!=len(words)-1):
