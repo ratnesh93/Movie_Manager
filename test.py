@@ -43,7 +43,7 @@ class MyTest:
           print("-----------------Testing "+BASE+"/movie"+"-----------------")
           for i in range(len(data)):
               response = requests.post(BASE + "movie",data[i])
-              assert response.status_code==201
+              assert response.status_code==200
           print("-----------------Passed-----------------")
       
       #2: testing posting aldreay existing movie
